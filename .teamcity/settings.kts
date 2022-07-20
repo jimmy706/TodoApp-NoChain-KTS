@@ -155,4 +155,5 @@ object TodoBackendVcs : GitVcsRoot({
         +:refs/heads/master
         +:refs/heads/demo
     """.trimIndent()
+    branch = ""
 })

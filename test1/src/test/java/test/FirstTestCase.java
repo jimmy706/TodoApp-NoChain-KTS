@@ -12,4 +12,9 @@ public class FirstTestCase {
     public void anotherTest() {
 
     }
+
+    @Test
+    public void addTest() {
+
+    }
 }
