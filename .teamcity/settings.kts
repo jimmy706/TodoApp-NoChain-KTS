@@ -59,9 +59,7 @@ object Test1 : BuildType({
         vcs { 
             enableQueueOptimization = true
             branchFilter = """
-                +:refs/heads/demo
-                +:refs/heads/master
-                -:*
+                +:refs/heads/*
             """.trimIndent()
         }
     }
@@ -155,4 +153,5 @@ object TodoBackendVcs : GitVcsRoot({
         +:refs/heads/master
         +:refs/heads/demo
     """.trimIndent()
+    branch = ""
 })
