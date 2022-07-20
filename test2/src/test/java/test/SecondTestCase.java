@@ -18,19 +18,19 @@ public class SecondTestCase {
 
     }
 
-    @Test
-    public void failed(){
-        Assertions.fail("must be failed this test");
-    }
-
-    @Test
-    @DisplayName("new test name")
-    public void someName(){
-    }
-
-    @ParameterizedTest(name = "my test({0})")
-    @ValueSource(strings = {"value1", "value2", "error"})
-    public void parameterized(String value) {
-        Assertions.assertNotEquals("error", value);
-    }
+//    @Test
+//    public void failed(){
+//        Assertions.fail("must be failed this test");
+//    }
+//
+//    @Test
+//    @DisplayName("new test name")
+//    public void someName(){
+//    }
+//
+//    @ParameterizedTest(name = "my test({0})")
+//    @ValueSource(strings = {"value1", "value2", "error"})
+//    public void parameterized(String value) {
+//        Assertions.assertNotEquals("error", value);
+//    }
 }

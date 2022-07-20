@@ -118,7 +118,6 @@ object TodoImage : BuildType({
 
     vcs {
         root(TodoBackendVcs, "+:docker=>docker")
-
         cleanCheckout = true
     }
 
@@ -141,4 +140,8 @@ object TodoImage : BuildType({
 object TodoBackendVcs : GitVcsRoot({
     name = "TodoBackendVcs"
     url = "https://github.com/jimmy706/TodoApp-NoChain-KTS"
+    branchSpec = """
+        +:refs/heads/master
+        +:refs/heads/demo
+    """.trimIndent()
 })
