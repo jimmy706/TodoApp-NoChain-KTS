@@ -54,6 +54,17 @@ object Test1 : BuildType({
 
         cleanCheckout = true
     }
+    
+    triggers {
+        vcs { 
+            enableQueueOptimization = true
+            branchFilter = """
+                +:refs/heads/demo
+                +:refs/heads/master
+                -:*
+            """.trimIndent()
+        }
+    }
 
     steps {
         gradle {
