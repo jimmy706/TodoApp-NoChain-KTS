@@ -7,4 +7,9 @@ public class FirstTestCase {
     public void testSomething(){
 
     }
+
+    @Test
+    public void addTest() {
+
+    }
 }
