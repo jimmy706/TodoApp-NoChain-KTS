@@ -4,7 +4,12 @@ import org.junit.Test;
 
 public class FirstTestCase {
     @Test
-    public void testSomething(){
+    public void testSomething() {
+
+    }
+
+    @Test
+    public void anotherTest() {
 
     }
 }
