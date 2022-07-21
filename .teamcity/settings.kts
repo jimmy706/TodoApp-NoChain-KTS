@@ -36,11 +36,9 @@ project {
 
 object TodoBackend : Project({
     name = "TodoBackend"
-
     vcsRoot(TodoBackendVcs)
 
     buildType(Test2)
-    buildType(TestReport)
     buildType(TodoApp)
     buildType(Test1)
     buildType(TodoImage)
@@ -48,58 +46,47 @@ object TodoBackend : Project({
 
 object Test1 : BuildType({
     name = "Test1"
-
     vcs {
         root(TodoBackendVcs, "+:test1=>.")
 
         cleanCheckout = true
     }
-    
     triggers {
-        vcs { 
+        vcs {
             enableQueueOptimization = true
             branchFilter = """
                 +:refs/heads/*
+                -:*
             """.trimIndent()
         }
     }
-
     steps {
         gradle {
             tasks = "test"
         }
     }
-
 })
 
 object Test2 : BuildType({
     name = "Test2"
-
+    triggers {
+        vcs {
+            enableQueueOptimization = true
+            branchFilter = """
+                +:refs/heads/*
+                -:*
+            """.trimIndent()
+        }
+    }
     vcs {
         root(TodoBackendVcs, "+:test2=>.")
-
         cleanCheckout = true
     }
-
     steps {
         gradle {
             tasks = "test"
         }
     }
-
-})
-
-object TestReport : BuildType({
-    name = "TestReport"
-
-    type = BuildTypeSettings.Type.COMPOSITE
-
-    vcs {
-        root(TodoBackendVcs)
-
-        showDependenciesChanges = true
-    }
-
 })
 
 object TodoApp : BuildType({
@@ -109,7 +96,6 @@ object TodoApp : BuildType({
 
     vcs {
         root(TodoBackendVcs, "-:docker")
-
         cleanCheckout = true
     }
 
@@ -133,17 +119,12 @@ object TodoImage : BuildType({
     steps {
         dockerCommand {
             commandType = build {
-                source = path {
-                    path = "./docker/Dockerfile"
-                }
-                contextDir = "."
+                contextDir = "docker/Dockerfile"
                 namesAndTags = "mkjetbrains/todo-backend:%build.number%"
                 commandArgs = "--pull"
             }
         }
     }
-
- 
 })
 
 object TodoBackendVcs : GitVcsRoot({
