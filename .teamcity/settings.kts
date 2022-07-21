@@ -119,7 +119,10 @@ object TodoImage : BuildType({
     steps {
         dockerCommand {
             commandType = build {
-                contextDir = "docker/Dockerfile"
+                file {
+                    path = "docker/Dockerfile"
+                }
+                contextDir = "."
                 namesAndTags = "mkjetbrains/todo-backend:%build.number%"
                 commandArgs = "--pull"
             }
