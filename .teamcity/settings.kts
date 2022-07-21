@@ -119,7 +119,7 @@ object TodoImage : BuildType({
     steps {
         dockerCommand {
             commandType = build {
-                path {
+                source = file {
                     path = "docker/Dockerfile"
                 }
                 contextDir = "."
