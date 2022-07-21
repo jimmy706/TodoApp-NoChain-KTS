@@ -118,6 +118,7 @@ object TodoImage : BuildType({
 
     steps {
         dockerCommand {
+            version = "19.03.3"
             commandType = build {
                 source = file {
                     path = "docker/Dockerfile"
